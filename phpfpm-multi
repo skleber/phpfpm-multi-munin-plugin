@@ -116,6 +116,7 @@ if (opendir my $dh, $cfg_pooldir) {
 
       if ($line =~ /^\[([^\]]*)\]/) {
         $pool->{pool} = $1;
+        $pool->{pool} =~ s/\.//g;  # Replaces all dots with empty space
       } elsif ($line =~ /^listen\s*=\s*(\S+)$/) {
         $pool->{socket} = $1;
       } elsif ($line =~ /^pm.status_path\s*=\s*(\S+)$/) {
